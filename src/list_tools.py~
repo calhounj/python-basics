@@ -1,0 +1,27 @@
+import sys
+
+
+def parse_args():
+    return [int(arg) for arg in sys.argv[1:]]
+
+
+def compute_stats(numbers):
+    count = len(numbers)
+    print('count: ', count)
+    print('sum: ', sum(numbers))
+    print('mean: ', sum(numbers)/count)
+    print('min: ', min(numbers))
+    print('max: ', max(numbers))
+    sortednums = sorted(numbers)
+    print('sorted: ', sortednums)
+    unique = set(numbers)
+    print('unique: ', list(unique))
+
+
+def main():
+    numbers = parse_args()
+    compute_stats(numbers)
+
+
+if __name__ == "__main__":
+    main()

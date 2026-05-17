@@ -1,0 +1,67 @@
+import sys
+
+
+def parse_args():
+    return [arg for arg in sys.argv[1:]]
+
+
+def unique_words(words):
+    result = []
+    for word in words:
+        if word not in result:
+            result.append(word)
+    return result
+
+
+def word_frequencies(words):
+    # Create dictionary of words
+    word_dict = {}
+    end = len(words)
+    for index, word in enumerate(words):
+        if word not in word_dict:
+            count = 1
+            for i in range(index + 1, end):
+                if word == words[i]:
+                    count += 1
+            word_dict[word] = count
+    return word_dict
+
+
+def print_frequencies(words):
+    print("frequencies:")
+    for key, value in words.items():
+        print(key, ": ", value)
+
+
+def main():
+    words = parse_args()
+    count = len(words)
+    # Handle empty input
+    if count == 0:
+        print("No words given")
+        return
+
+    # Print original words
+    print("Original words: ")
+    for word in words:
+        print(word)
+
+    # Print word count
+    print("word count: ", count)
+
+    # Print unique words
+    print("Unique words:")
+    unique = unique_words(words)
+    for word in unique:
+        print(word)
+
+    # Compute frequencies
+    freq_dict = word_frequencies(words)
+
+
+    # Print frequencies
+    print_frequencies(freq_dict)
+
+
+if __name__ == "__main__":
+    main()
